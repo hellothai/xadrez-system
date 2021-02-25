@@ -6,6 +6,8 @@
 package chess;
 
 import boardgame.Board;
+import boardgame.Piece;
+import boardgame.Position;
 import pieces.King;
 import pieces.Rook;
 
@@ -32,6 +34,24 @@ public class ChessMatch {
         return mat;
     }
 
+    /*
+    Method convert chess position to matrix position and validate 
+     */
+    public ChessPiece performChessMove(ChessPosition source, ChessPosition target) {
+        Position sourceP = source.toPosition();
+        Position targetP = target.toPosition();
+        validateSourcePosition(sourceP);
+        Piece captured = makeMove(sourceP, targetP);
+        return (ChessPiece) captured;
+
+    }
+
+    private void validateSourcePosition(Position position) {
+        if (!board.thereIsAPiece(position)) {
+            throw new ChessException("There is no piece on position");
+        }
+    }
+
     private void placeNewPiece(char column, int row, ChessPiece piece) {
         board.placePiece(piece, new ChessPosition(column, row).toPosition());
     }
@@ -50,6 +70,16 @@ public class ChessMatch {
         placeNewPiece('e', 7, new Rook(board, Color.BLACK));
         placeNewPiece('e', 8, new Rook(board, Color.BLACK));
         placeNewPiece('d', 8, new King(board, Color.BLACK));
+    }
+
+    /*
+    Method removes piece on source position and removes possible piece in target position and insert piece on target
+    */
+    private Piece makeMove(Position sourceP, Position targetP) {
+        Piece p = board.removePiece(sourceP);
+        Piece captured = board.removePiece(targetP);
+        board.placePiece(p, targetP);
+        return captured;
     }
 
 }
