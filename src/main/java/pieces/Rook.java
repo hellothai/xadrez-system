@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package chess.pieces;
+package pieces;
 
 import boardgame.Board;
 import chess.ChessPiece;
