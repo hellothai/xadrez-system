@@ -25,6 +25,9 @@ public class King extends ChessPiece {
         return "K";
     }
 
+    /*
+    method verify color of piece and returns if it can be moved
+    */
     public boolean canMove(Position pos) {
         ChessPiece p = (ChessPiece) getBoard().piece(pos);
         return p== null || p.getColor() != getColor();
