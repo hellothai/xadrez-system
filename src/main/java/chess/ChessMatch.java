@@ -33,6 +33,12 @@ public class ChessMatch {
         }
         return mat;
     }
+    
+    public boolean [][] possibleMoves(  ChessPosition sourceP){
+        Position pos = sourceP.toPosition();
+        validateSourcePosition(pos);
+        return board.piece(pos).possibleMoves();
+    }
 
     /*
     Method convert chess position to matrix position and validate 
@@ -92,5 +98,7 @@ public class ChessMatch {
         board.placePiece(p, targetP);
         return captured;
     }
+    
+    
 
 }
