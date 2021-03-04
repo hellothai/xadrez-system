@@ -60,6 +60,9 @@ class UI {
         System.out.println();
         System.out.println("Turn: " + chessMat.getTurn());
         System.out.println("Waiting... " + chessMat.getCurrentPlayer());
+        if(chessMat.getCheck()){
+            System.out.println("CHECK!!!");
+        }
 
     }
 
