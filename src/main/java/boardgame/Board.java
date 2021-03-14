@@ -5,6 +5,8 @@
  */
 package boardgame;
 
+import chess.ChessPiece;
+
 /**
  *
  * @author thais
